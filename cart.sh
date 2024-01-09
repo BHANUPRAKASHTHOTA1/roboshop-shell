@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DATE=$(date +%F)
-LOGSDIR=/temp
+LOGSDIR=/tmp
 # /home/centos/roboshop-logs/script-name-date.log
 SCRIPT_NAME=$0
 LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
@@ -26,6 +26,7 @@ VALIDATE() {
         echo -e "$2 ...... $G Success $N"
     fi
 }
+
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> $LOGFILE
 VALIDATE $? "Setup NodeJS repos"
 yum install nodejs -y &>> $LOGFILE
